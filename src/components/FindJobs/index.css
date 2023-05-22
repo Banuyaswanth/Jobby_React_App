@@ -3,9 +3,9 @@
   font-family: 'Roboto';
 }
 .find-jobs-bottom-section {
-  padding: 15px;
+  padding: 25px;
 }
-.search-bar {
+.mobile-search-bar {
   border: 1px solid #6366f1;
   border-radius: 4px;
   display: flex;
@@ -23,7 +23,9 @@
   background-color: #202020;
   color: #ffffff;
   border: none;
-  padding: 10px;
+  padding: 15px;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 .profile-loading-failure {
   height: 120px;
@@ -47,10 +49,7 @@
   background-size: cover;
   height: 170px;
   padding: 15px;
-  border-top-right-radius: 15px;
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-radius: 8px;
   margin-bottom: 25px;
 }
 .profile-pic {
@@ -69,10 +68,87 @@
 }
 .horizontal-rule {
   border: 1px solid #cbd5e1;
+  margin-bottom: 25px;
 }
-
+.filter-section-side-heading {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+}
+.filter-list-container {
+  list-style-type: none;
+  padding-left: 0px;
+  margin-bottom: 25px;
+}
+.list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.checkbox {
+  margin-right: 8px;
+}
+.checkbox-label {
+  color: #ffffff;
+  font-size: 11px;
+}
+.radio-button {
+  margin-right: 8px;
+}
+.radio-button-label {
+  color: #ffffff;
+  font-size: 11px;
+}
+.desktop-search-bar {
+  display: none;
+}
+.jobs-list-failure-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.jobs-list-failure-heading {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+}
+.jobs-list-failure-description {
+  color: #ffffff;
+  font-size: 12px;
+}
+.jobs-list-success-view {
+  list-style-type: none;
+  padding-left: 0px;
+}
 @media (min-width: 768px) {
   .filters-section {
-    width: 250px;
+    margin-left: 40px;
+    width: 300px;
+    flex-shrink: 0;
+    margin-right: 25px;
+  }
+  .jobs-section {
+    margin-right: 40px;
+  }
+  .mobile-search-bar {
+    display: none;
+  }
+  .desktop-search-bar {
+    border: 1px solid #6366f1;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    width: 300px;
+  }
+  .find-jobs-bottom-section {
+    display: flex;
+    justify-content: center;
+  }
+  .jobs-list-failure-heading {
+    font-size: 32px;
+    font-weight: 600;
   }
 }

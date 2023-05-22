@@ -1,0 +1,60 @@
+.job-list-item {
+  background-color: #202020;
+  padding: 15px;
+  color: #ffffff;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  text-shadow: none;
+}
+.company-name-logo {
+  display: flex;
+  align-items: center;
+}
+.company-logo {
+  height: 45px;
+  width: 45px;
+  margin-right: 10px;
+}
+.rating-star-logo {
+  font-size: 14px;
+  color: #fbbf24;
+}
+.company-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+.company-rating {
+  font-size: 14px;
+  font-weight: 500;
+}
+.location-and-employment-type {
+  font-size: 14px;
+}
+.location-and-employment-container {
+  display: flex;
+  justify-content: space-between;
+}
+.location-icon {
+  margin-right: 3px;
+}
+.work-icon {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+.package {
+  font-size: 16px;
+  font-weight: 500;
+}
+.job-description-heading {
+  font-size: 16px;
+  font-weight: 500;
+}
+.job-description {
+  font-size: 11px;
+  font-weight: 300;
+}
+.job-item-horizontal-rule {
+  border: 1px solid #cbd5e1;
+  margin-bottom: 15px;
+}
