@@ -11,18 +11,15 @@ const Header = props => {
     const {history} = props
     history.replace('/login')
   }
-  const onClickLogo = () => {
-    const {history} = props
-    history.replace('/')
-  }
   return (
     <nav className="header">
-      <img
-        src="https://assets.ccbp.in/frontend/react-js/logo-img.png"
-        alt="website logo"
-        className="website-logo"
-        onClick={onClickLogo}
-      />
+      <Link to="/">
+        <img
+          src="https://assets.ccbp.in/frontend/react-js/logo-img.png"
+          alt="website logo"
+          className="website-logo"
+        />
+      </Link>
       <ul className="list-container">
         <Link to="/">
           <li className="header-li-items">Home</li>

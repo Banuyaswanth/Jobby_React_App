@@ -67,7 +67,7 @@ class FindJobs extends Component {
     isJobsLoading: isJobsLoadingConstants.Initial,
     employmentType: [],
     searchInput: '',
-    salaryRange: '1000000',
+    salaryRange: '',
     jobsList: [],
   }
 
@@ -270,6 +270,7 @@ class FindJobs extends Component {
           <div className="filters-section">
             <div className="mobile-search-bar">
               <input
+                type="search"
                 className="input-element"
                 value={searchInput}
                 placeholder="search"
@@ -286,7 +287,7 @@ class FindJobs extends Component {
             </div>
             {this.displayProfile()}
             <hr className="horizontal-rule" />
-            <p className="filter-section-side-heading">Type of Employment</p>
+            <h1 className="filter-section-side-heading">Type of Employment</h1>
             <ul className="filter-list-container">
               {employmentTypesList.map(each => (
                 <EmploymentTypeListItem
@@ -297,7 +298,7 @@ class FindJobs extends Component {
               ))}
             </ul>
             <hr className="horizontal-rule" />
-            <p className="filter-section-side-heading">Salary Range</p>
+            <h1 className="filter-section-side-heading">Salary Range</h1>
             <ul className="filter-list-container">
               {salaryRangesList.map(each => (
                 <SalaryRangeListItem
@@ -311,6 +312,7 @@ class FindJobs extends Component {
           <div className="jobs-section">
             <div className="desktop-search-bar">
               <input
+                type="search"
                 className="input-element"
                 value={searchInput}
                 placeholder="search"

@@ -210,7 +210,7 @@ class DetailedJobItem extends Component {
             <button
               type="button"
               className="retry-button"
-              onClick={this.getJobList}
+              onClick={this.getJobDetails}
             >
               Retry
             </button>
