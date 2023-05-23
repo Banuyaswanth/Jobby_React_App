@@ -1,0 +1,46 @@
+.similar-job-item {
+  background-color: #202020;
+  border-radius: 8px;
+  padding: 20px;
+  width: 30%;
+  margin-right: 25px;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.similar-job-company-title-rating-container {
+  display: flex;
+}
+.similar-jobs-description-heading {
+  color: #ffffff;
+  font-size: 16px;
+}
+.similar-job-description {
+  color: #ffffff;
+  font-size: 12px;
+}
+.similar-job-react-location-icon {
+  font-size: 16px;
+  margin-right: 3px;
+}
+.similar-job-react-work-icon {
+  font-size: 16px;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+.similar-job-location-text {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+@media (max-width: 767px) {
+  .similar-job-item {
+    width: 100%;
+    margin-right: 0px;
+  }
+}

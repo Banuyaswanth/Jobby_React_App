@@ -4,6 +4,8 @@ import Loader from 'react-loader-spinner'
 import {BsSearch} from 'react-icons/bs'
 import Header from '../Header'
 import JobItem from '../JobItem'
+import EmploymentTypeListItem from '../employmentTypeListItem'
+import SalaryRangeListItem from '../SalaryRangeListItem'
 import './index.css'
 
 const isProfileLoadingConstants = {
@@ -74,6 +76,34 @@ class FindJobs extends Component {
     this.getJobList()
   }
 
+  onChangeSearchInput = event => {
+    this.setState({searchInput: event.target.value})
+  }
+
+  jobSearchBtnClicked = () => {
+    this.getJobList()
+  }
+
+  changeEmploymentType = async id => {
+    const {employmentType} = this.state
+    console.log('change Employment triggered')
+    if (employmentType.includes(id) === true) {
+      const newEmploymentTypeList = employmentType.filter(each => each !== id)
+      await this.setState({employmentType: newEmploymentTypeList})
+      this.getJobList()
+    } else {
+      await this.setState(prevState => ({
+        employmentType: [...prevState.employmentType, id],
+      }))
+      this.getJobList()
+    }
+  }
+
+  changeSalaryRange = async id => {
+    await this.setState({salaryRange: id})
+    this.getJobList()
+  }
+
   getProfileDetails = async () => {
     this.setState({isProfileLoading: isProfileLoadingConstants.Loading})
     const jwtToken = Cookies.get('jwt_token')
@@ -106,6 +136,7 @@ class FindJobs extends Component {
     this.setState({isJobsLoading: isJobsLoadingConstants.Loading})
     const jwtToken = Cookies.get('jwt_token')
     const {employmentType, searchInput, salaryRange} = this.state
+    console.log(employmentType)
     const employmentTypeQueryParameter = employmentType.join(',')
     const jobsApiUrl = `https://apis.ccbp.in/jobs?employment_type=${employmentTypeQueryParameter}&minimum_package=${salaryRange}&search=${searchInput}`
     const options = {
@@ -231,7 +262,7 @@ class FindJobs extends Component {
   }
 
   render() {
-    const {isJobsLoading, searchInput} = this.state
+    const {searchInput} = this.state
     return (
       <div className="find-jobs-bg-container">
         <Header />
@@ -242,11 +273,13 @@ class FindJobs extends Component {
                 className="input-element"
                 value={searchInput}
                 placeholder="search"
+                onChange={this.onChangeSearchInput}
               />
               <button
                 className="search-button"
                 type="button"
                 data-testid="searchButton"
+                onClick={this.jobSearchBtnClicked}
               >
                 <BsSearch className="search-icon" />
               </button>
@@ -256,41 +289,22 @@ class FindJobs extends Component {
             <p className="filter-section-side-heading">Type of Employment</p>
             <ul className="filter-list-container">
               {employmentTypesList.map(each => (
-                <li className="list-item" key={each.employmentTypeId}>
-                  <input
-                    value={each.employmentTypeId}
-                    type="checkbox"
-                    id={each.employmentTypeId}
-                    className="checkbox"
-                  />
-                  <label
-                    className="checkbox-label"
-                    htmlFor={each.employmentTypeId}
-                  >
-                    {each.label}
-                  </label>
-                </li>
+                <EmploymentTypeListItem
+                  key={each.employmentTypeId}
+                  each={each}
+                  changeEmploymentType={this.changeEmploymentType}
+                />
               ))}
             </ul>
             <hr className="horizontal-rule" />
             <p className="filter-section-side-heading">Salary Range</p>
             <ul className="filter-list-container">
               {salaryRangesList.map(each => (
-                <li className="list-item" key={each.salaryRangeId}>
-                  <input
-                    name="salary"
-                    className="radio-button"
-                    type="radio"
-                    id={each.salaryRangeId}
-                    value={each.salaryRangeId}
-                  />
-                  <label
-                    className="radio-button-label"
-                    htmlFor={each.salaryRangeId}
-                  >
-                    {each.label}
-                  </label>
-                </li>
+                <SalaryRangeListItem
+                  key={each.salaryRangeId}
+                  each={each}
+                  changeSalaryRange={this.changeSalaryRange}
+                />
               ))}
             </ul>
           </div>
@@ -300,11 +314,13 @@ class FindJobs extends Component {
                 className="input-element"
                 value={searchInput}
                 placeholder="search"
+                onChange={this.onChangeSearchInput}
               />
               <button
                 className="search-button"
                 type="button"
                 data-testid="searchButton"
+                onClick={this.jobSearchBtnClicked}
               >
                 <BsSearch className="search-icon" />
               </button>
