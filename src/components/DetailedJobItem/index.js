@@ -29,17 +29,6 @@ class DetailedJobItem extends Component {
     this.getJobDetails()
   }
 
-  changeStateMethod = async () => {
-    await this.setState({
-      jobDetailsState: {},
-      lifeAtCompanyState: {},
-      skillsListState: [],
-      similarJobsState: [],
-      isLoading: isLoadingConstants.Initial,
-    })
-    this.getJobDetails()
-  }
-
   getJobDetails = async () => {
     this.setState({isLoading: isLoadingConstants.Loading})
     const {match} = this.props
@@ -189,11 +178,7 @@ class DetailedJobItem extends Component {
         <h1 className="similar-jobs-heading">Similar Jobs</h1>
         <ul className="similar-jobs-list-container">
           {similarJobsState.map(each => (
-            <SimilarJobItem
-              key={each.id}
-              each={each}
-              changeStateMethod={this.changeStateMethod}
-            />
+            <SimilarJobItem key={each.id} each={each} />
           ))}
         </ul>
       </>

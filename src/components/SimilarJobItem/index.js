@@ -5,7 +5,7 @@ import {BsBriefcaseFill} from 'react-icons/bs'
 import './index.css'
 
 const SimilarJobItem = props => {
-  const {each, changeStateMethod} = props
+  const {each} = props
   const {
     companyLogoUrl,
     employmentType,
@@ -16,16 +16,8 @@ const SimilarJobItem = props => {
     title,
   } = each
 
-  const changeUrlTrigger = () => {
-    changeStateMethod()
-  }
-
   return (
-    <Link
-      to={`/jobs/${id}`}
-      className="similar-job-item"
-      onClick={changeUrlTrigger}
-    >
+    <Link to={`/jobs/${id}`} className="similar-job-item">
       <li>
         <div className="similar-job-company-title-rating-container">
           <img
