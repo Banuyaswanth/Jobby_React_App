@@ -84,24 +84,24 @@ class FindJobs extends Component {
     this.getJobList()
   }
 
-  changeEmploymentType = async id => {
+  changeEmploymentType = id => {
     const {employmentType} = this.state
     console.log('change Employment triggered')
     if (employmentType.includes(id) === true) {
       const newEmploymentTypeList = employmentType.filter(each => each !== id)
-      await this.setState({employmentType: newEmploymentTypeList})
-      this.getJobList()
+      this.setState({employmentType: newEmploymentTypeList}, this.getJobList)
     } else {
-      await this.setState(prevState => ({
-        employmentType: [...prevState.employmentType, id],
-      }))
-      this.getJobList()
+      this.setState(
+        prevState => ({
+          employmentType: [...prevState.employmentType, id],
+        }),
+        this.getJobList,
+      )
     }
   }
 
-  changeSalaryRange = async id => {
-    await this.setState({salaryRange: id})
-    this.getJobList()
+  changeSalaryRange = id => {
+    this.setState({salaryRange: id}, this.getJobList)
   }
 
   getProfileDetails = async () => {
@@ -271,7 +271,7 @@ class FindJobs extends Component {
             <div className="mobile-search-bar">
               <input
                 type="search"
-                className="input-element"
+                className="find-jobs-input-element"
                 value={searchInput}
                 placeholder="search"
                 onChange={this.onChangeSearchInput}
@@ -313,7 +313,7 @@ class FindJobs extends Component {
             <div className="desktop-search-bar">
               <input
                 type="search"
-                className="input-element"
+                className="find-jobs-input-element"
                 value={searchInput}
                 placeholder="search"
                 onChange={this.onChangeSearchInput}
